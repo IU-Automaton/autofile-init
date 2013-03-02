@@ -1,9 +1,9 @@
 `automaton task` - http://indigounited.com/automaton
 
-rm
+init
 ===
 
-Remove file or set of files.
+Init an empty autofile.
 
 *Indigo United 2013*
 

@@ -1,30 +1,22 @@
-/*jshint es5:true*/
-
 'use strict';
 
 var fs    = require('fs');
 var path  = require('path');
-var utils = require('mout');
 
-var task = {
-    id          : 'init',
-    author      : 'Indigo United',
-    name        : 'Init',
-    description : 'Init an empty autofile.',
-    options: {
-        name: {
-            description: 'The task name.',
-            default: 'autofile'
-        },
-        dst: {
-            description: 'Directory in which the task will be created.',
-            default: process.cwd()
-        }
-    },
-    setup       : function (opt, ctx, next) {
+module.exports = function (task) {
+    task
+    .id('init')
+    .name('Init')
+    .description('Init an empty autofile.')
+    .author('Indigo United')
+
+    .option('name', 'The task name.', 'autofile')
+    .option('dst', 'Directory in which the task will be created.', process.cwd())
+
+    .setup(function (opt, ctx, next) {
         var error;
 
-        if (utils.string.endsWith(opt.name, '.js')) {
+        if (path.extname(opt.name) === '.js') {
             opt.name = opt.name.slice(0, -3);
         }
         opt.filename = path.join(opt.dst, opt.name + '.js');
@@ -39,29 +31,22 @@ var task = {
 
             next();
         });
-    },
-    tasks     :
-    [
-        {
-            task: 'cp',
-            description: null,
-            options: {
-                files: {
-                    '{{__dirname}}/../base_autofile.js': '{{filename}}'
-                }
-            }
-        },
-        {
-            task: 'scaffolding-replace',
-            description: null,
-            options: {
-                files: '{{filename}}',
-                data: {
-                    name: '{{name}}'
-                }
+    })
+    .do('cp', {
+        description: null,
+        options: {
+            files: {
+                '{{__dirname}}/base_autofile.js': '{{filename}}'
             }
         }
-    ]
+    })
+    .do('scaffolding-replace', {
+        description: null,
+        options: {
+            files: '{{filename}}',
+            data: {
+                name: '{{name}}'
+            }
+        }
+    });
 };
-
-module.exports = task;
