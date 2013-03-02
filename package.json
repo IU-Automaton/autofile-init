@@ -1,6 +1,6 @@
 {
   "name": "autofile-init",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Init an empty autofile.",
   "main": "autofile.js",
   "scripts": {
