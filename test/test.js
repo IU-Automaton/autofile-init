@@ -1,12 +1,13 @@
+/*global describe, it, beforeEach, after*/
+
 'use strict';
 
-var expect    = require('expect.js'),
-    isFile    = require('./util/is-file'),
-    rimraf    = require('rimraf'),
-    fs        = require('fs'),
-    automaton = require('automaton').create(),
-    init      = require('../autofile')
-;
+var expect    = require('expect.js');
+var isFile    = require('./util/isFile');
+var rimraf    = require('rimraf');
+var fs        = require('fs');
+var automaton = require('automaton').create();
+var init      = require('../autofile');
 
 describe('init', function () {
     var target =  __dirname + '/tmp/';

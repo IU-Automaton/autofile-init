@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IU-Automaton/autofile-init"
+    "url": "git://github.com/IU-Automaton/autofile-init.git"
   },
   "keywords": [
     "autofile",
@@ -21,9 +21,9 @@
   "author": "Indigo United",
   "license": "MIT",
   "devDependencies": {
-    "automaton": "~0.1.4",
+    "automaton": "~0.2.0",
     "rimraf": "~2.1.4",
     "expect.js": "~0.2.0",
-    "mocha": "~1.8.1"
+    "mocha": "~1.11.0"
   }
 }
